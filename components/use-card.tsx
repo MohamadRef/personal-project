@@ -19,11 +19,14 @@ type BioCardsProps = {
   >
 }
 
+// Absolute URL to your GitHub Pages site with /personal-project
+const BASE_URL = "https://mohamadref.github.io/personal-project"
+
 function ProfilePhoto() {
   return (
     <div className="relative w-64 h-64 sm:w-72 sm:h-72 overflow-hidden rounded-full shadow-md ring-4 ring-neutral-800">
       <img
-        src="/pfp.jpg"
+        src={`${BASE_URL}/pfp.jpg`}
         alt="Profile"
         className="object-cover w-full h-full rounded-full"
       />
@@ -197,7 +200,7 @@ export function BioCards({ openDialog, setOpenDialog }: BioCardsProps) {
                     className="flex items-center gap-2 text-blue-400 hover:underline"
                   >
                     <img
-                      src="/Linkedin.webp"
+                      src={`${BASE_URL}/Linkedin.webp`}
                       alt="LinkedIn Icon"
                       className="w-5 h-5"
                     />
@@ -212,7 +215,7 @@ export function BioCards({ openDialog, setOpenDialog }: BioCardsProps) {
                     className="flex items-center gap-2 text-blue-400 hover:underline"
                   >
                     <img
-                      src="/Github.png"
+                      src={`${BASE_URL}/Github.png`}
                       alt="GitHub Icon"
                       className="w-5 h-5"
                     />
@@ -222,7 +225,7 @@ export function BioCards({ openDialog, setOpenDialog }: BioCardsProps) {
               </ul>
               <p className="mt-4">
                 <a
-                  href="/resume.pdf"
+                  href={`${BASE_URL}/resume.pdf`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
