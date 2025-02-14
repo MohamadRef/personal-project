@@ -3,7 +3,7 @@ import {
     MenubarMenu,
     MenubarTrigger,
   } from "@/components/ui/menubar"
-  import { MouseEventHandler } from "react"
+  // import { MouseEventHandler } from "react"
   
   type Props = {
     onMenuClick: (type: "bio" | "experience" | "about") => void
