@@ -2,8 +2,6 @@
 
 import React from "react"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
-
-// Import the shadcn dialog components:
 import {
   Dialog,
   DialogContent,
@@ -11,6 +9,14 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog"
+// Import carousel components
+import { 
+  Carousel, 
+  CarouselItem, 
+  CarouselContent,
+  CarouselPrevious,
+  CarouselNext 
+} from "@/components/ui/carousel"
 
 type BioCardsProps = {
   openDialog: "bio" | "experience" | "about" | null
@@ -22,14 +28,41 @@ type BioCardsProps = {
 // Absolute URL to your GitHub Pages site with /personal-project
 const BASE_URL = "https://mohamadref.github.io/personal-project"
 
-function ProfilePhoto() {
+function ProfileCarousel() {
+  // Array of image paths
+  const images = [
+    "/pfp.jpg",
+    "/IMG_1272.jpg",
+    "/IMG_1799.jpg"
+  ]
+  
   return (
-    <div className="relative w-64 h-64 sm:w-72 sm:h-72 overflow-hidden rounded-full shadow-md ring-4 ring-neutral-800">
-      <img
-        src={`${BASE_URL}/pfp.jpg`}
-        alt="Profile"
-        className="object-cover w-full h-full rounded-full"
-      />
+    <div className="w-full">
+      <Carousel className="w-full">
+        <CarouselContent>
+          {images.map((image, index) => (
+            <CarouselItem key={index}>
+              <div className="relative overflow-hidden aspect-[4/3] rounded-lg shadow-xl bg-black/50 backdrop-blur-md">
+                <img
+                  src={`${BASE_URL}${image}`}
+                  alt={`Photo ${index + 1}`}
+                  className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <div className="flex items-center justify-center gap-4 mt-4">
+          <CarouselPrevious 
+            variant="outline" 
+            className="relative left-0 right-0 h-8 w-8 rounded-full border-neutral-800 bg-black/50 backdrop-blur-md hover:bg-black/80 hover:border-neutral-700"
+          />
+          <CarouselNext 
+            variant="outline"
+            className="relative left-0 right-0 h-8 w-8 rounded-full border-neutral-800 bg-black/50 backdrop-blur-md hover:bg-black/80 hover:border-neutral-700"
+          />
+        </div>
+      </Carousel>
     </div>
   )
 }
@@ -52,14 +85,14 @@ export function BioCards({ openDialog, setOpenDialog }: BioCardsProps) {
         </div>
 
         {/* Profile / Personal Info */}
-        <div className="mb-12 flex flex-col items-center sm:flex-row sm:items-start sm:space-x-8">
-          <ProfilePhoto />
-          <div className="mt-6 sm:mt-0 text-center sm:text-left">
+        <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+          <ProfileCarousel />
+          <div className="text-center md:text-left">
             <h2 className="text-2xl font-bold tracking-wide drop-shadow-sm">
               Mohamad Refaai
             </h2>
             <p className="mt-2 max-w-md text-lg text-neutral-300 tracking-wide">
-              I’m a passionate developer who loves crafting elegant solutions.
+              I'm a passionate developer who loves crafting elegant solutions.
             </p>
           </div>
         </div>
@@ -98,7 +131,7 @@ export function BioCards({ openDialog, setOpenDialog }: BioCardsProps) {
               </CardTitle>
             </CardHeader>
             <CardContent className="p-4 text-base leading-relaxed">
-              I’ve been fascinated by computer science since I was 11. Hours
+              I've been fascinated by computer science since I was 11. Hours
               spent exploring websites sparked my curiosity, leading me to dive
               into HTML, web development, and robotics. This blend of digital
               creation and hands-on engineering has shaped my exciting journey
@@ -238,10 +271,7 @@ export function BioCards({ openDialog, setOpenDialog }: BioCardsProps) {
         </div>
       </div>
 
-      {/* 
-        Dark-themed dialogs using shadcn. 
-        Their semi-transparent, blurred background now reflects the page’s transparency.
-      */}
+      {/* Shadcn Dialogs */}
       <Dialog
         open={openDialog === "bio"}
         onOpenChange={(open) => !open && setOpenDialog(null)}
@@ -252,7 +282,7 @@ export function BioCards({ openDialog, setOpenDialog }: BioCardsProps) {
               Bio
             </DialogTitle>
             <DialogDescription className="mt-4 text-base leading-relaxed">
-              I’m a passionate developer with a love for crafting elegant
+              I'm a passionate developer with a love for crafting elegant
               solutions. I come from a diverse background—Russian, Syrian, and
               raised in Saudi Arabia.
             </DialogDescription>
@@ -288,8 +318,8 @@ export function BioCards({ openDialog, setOpenDialog }: BioCardsProps) {
             </DialogTitle>
             <DialogDescription className="mt-4 text-base leading-relaxed">
               I enjoy exploring new technologies, tackling challenging
-              problems, and continuously learning. Whether it’s web development
-              or robotics, I’m always eager to expand my skill set.
+              problems, and continuously learning. Whether it's web development
+              or robotics, I'm always eager to expand my skill set.
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
