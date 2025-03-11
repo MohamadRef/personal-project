@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react"
+import Image from "next/image"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import {
   Dialog,
@@ -43,10 +44,12 @@ function ProfileCarousel() {
           {images.map((image, index) => (
             <CarouselItem key={index}>
               <div className="relative overflow-hidden aspect-[4/3] rounded-lg shadow-xl bg-black/50 backdrop-blur-md">
-                <img
+                <Image
                   src={`${BASE_URL}${image}`}
                   alt={`Photo ${index + 1}`}
-                  className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+                  fill
+                  className="object-contain hover:scale-105 transition-transform duration-300"
+                  unoptimized
                 />
               </div>
             </CarouselItem>
@@ -92,7 +95,7 @@ export function BioCards({ openDialog, setOpenDialog }: BioCardsProps) {
               Mohamad Refaai
             </h2>
             <p className="mt-2 max-w-md text-lg text-neutral-300 tracking-wide">
-              I'm a passionate developer who loves crafting elegant solutions.
+              I&apos;m a passionate developer who loves crafting elegant solutions.
             </p>
           </div>
         </div>
@@ -131,7 +134,7 @@ export function BioCards({ openDialog, setOpenDialog }: BioCardsProps) {
               </CardTitle>
             </CardHeader>
             <CardContent className="p-4 text-base leading-relaxed">
-              I've been fascinated by computer science since I was 11. Hours
+              I&apos;ve been fascinated by computer science since I was 11. Hours
               spent exploring websites sparked my curiosity, leading me to dive
               into HTML, web development, and robotics. This blend of digital
               creation and hands-on engineering has shaped my exciting journey
@@ -232,11 +235,14 @@ export function BioCards({ openDialog, setOpenDialog }: BioCardsProps) {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-blue-400 hover:underline"
                   >
-                    <img
-                      src={`${BASE_URL}/Linkedin.webp`}
-                      alt="LinkedIn Icon"
-                      className="w-5 h-5"
-                    />
+                    <div className="relative w-5 h-5">
+                      <Image
+                        src={`${BASE_URL}/Linkedin.webp`}
+                        alt="LinkedIn Icon"
+                        fill
+                        unoptimized
+                      />
+                    </div>
                     <span>LinkedIn</span>
                   </a>
                 </li>
@@ -247,11 +253,14 @@ export function BioCards({ openDialog, setOpenDialog }: BioCardsProps) {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-blue-400 hover:underline"
                   >
-                    <img
-                      src={`${BASE_URL}/Github.png`}
-                      alt="GitHub Icon"
-                      className="w-5 h-5"
-                    />
+                    <div className="relative w-5 h-5">
+                      <Image
+                        src={`${BASE_URL}/Github.png`}
+                        alt="GitHub Icon"
+                        fill
+                        unoptimized
+                      />
+                    </div>
                     <span>GitHub</span>
                   </a>
                 </li>
@@ -282,7 +291,7 @@ export function BioCards({ openDialog, setOpenDialog }: BioCardsProps) {
               Bio
             </DialogTitle>
             <DialogDescription className="mt-4 text-base leading-relaxed">
-              I'm a passionate developer with a love for crafting elegant
+              I&apos;m a passionate developer with a love for crafting elegant
               solutions. I come from a diverse background—Russian, Syrian, and
               raised in Saudi Arabia.
             </DialogDescription>
@@ -318,8 +327,8 @@ export function BioCards({ openDialog, setOpenDialog }: BioCardsProps) {
             </DialogTitle>
             <DialogDescription className="mt-4 text-base leading-relaxed">
               I enjoy exploring new technologies, tackling challenging
-              problems, and continuously learning. Whether it's web development
-              or robotics, I'm always eager to expand my skill set.
+              problems, and continuously learning. Whether it&apos;s web development
+              or robotics, I&apos;m always eager to expand my skill set.
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
